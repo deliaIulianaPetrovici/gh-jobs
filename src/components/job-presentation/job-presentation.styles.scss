@@ -1,0 +1,117 @@
+$violet:rgb(89,100,224);
+$lightViolet:#939BF4;
+$veryDarkBlue:#19202D;
+$midnight:#121721;
+$white:#FFFFFF;
+$lightGray:#f4f6f8;
+$gray:#9DAEC2;
+$darkGrey:#6E8098;
+
+.jobpresentation-container{
+    display:flex;
+    flex-direction: column;
+    margin-top:30px;
+    border-radius: 4px;
+    background-color: $white;
+    padding:20px 45px;
+    box-sizing: border-box;
+}
+.jobpresentation-header{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    
+    .jobInfo-container{
+        padding:0;
+        margin:0;
+        height: auto;
+        h2{    display:none;    }
+        h3{    display:none;    }
+        .styled-link{display:none;}
+        .company-name{ display:none;}
+        .location{margin-top: 16px;}
+
+    } 
+
+    .custom-button{
+        flex:1;
+    }
+}
+
+
+.jobpresentation-body{
+    margin-top:40px;
+    color:$darkGrey;
+    text-align: left;
+
+    ul{
+        list-style: none;
+        
+       
+        li::before{
+            content: "\2022";
+            color: $violet;
+            font-weight: bold;
+            font-size: 1.5rem;
+            display: inline-block; 
+            width: 1em;
+            margin-left: -1em;
+        }
+    }
+
+    p{
+        strong{
+            color:$midnight;
+        }
+    }
+
+    h1, h2{
+        color:$midnight;
+        font-size:large;
+    }
+    pre{
+        overflow: hidden;
+      &:hover,&:focus{
+          width: min-content;
+      }
+    }
+    a{
+        
+        font-weight: bold;
+        &:link, &:visited{ color: $violet;}
+        &:hover{ color: $lightViolet; text-decoration: none;}
+       
+    }
+    
+}
+.apply-container{
+    margin-top:30px;
+    background-color: $violet;
+    padding:20px 45px;
+    border-radius: 4px;
+    box-sizing: border-box;
+    color: $white;
+    text-align: left;
+  
+    p{
+        margin-bottom: 40px;
+    }
+    
+    a{
+
+        display:block;
+        
+      
+        &:link, &:visited{ 
+            font-weight: bold;
+        white-space: wrap;
+        width:100%; 
+        overflow: hidden;
+        text-overflow: ellipsis;
+            color: $white;;}
+        &:hover{ color: $veryDarkBlue; text-decoration: none;}
+
+     
+    }
+ 
+}

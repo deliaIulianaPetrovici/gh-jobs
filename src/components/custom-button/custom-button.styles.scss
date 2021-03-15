@@ -1,0 +1,62 @@
+$violet:rgb(89,100,224);
+$lightViolet:#939BF4;
+$veryDarkBlue:#19202D;
+$midnight:#121721;
+$white:#FFFFFF;
+$lightGray:#f4f6f8;
+$gray:#9DAEC2;
+$darkGrey:#6E8098;
+
+@mixin themeColors($light-theme:true, $light-theme-white:true){
+    @if $light-theme{
+        @if $light-theme-white{
+            background-color: lighten($color: $violet, $amount: 32%);
+            color:$violet;
+            &:hover{
+                background-color: lighten($color: $violet, $amount: 25%);
+            } 
+        } @else{
+            background-color: $violet;
+            color:$white;
+            &:hover{
+                background-color: $lightViolet;
+            } 
+        }
+    } @else{
+        background-color: $darkGrey;
+        color:$white;
+        &:hover{
+            background-color: $gray;
+        } 
+           
+    }
+
+}
+
+
+.custom-button{
+    height:48px;
+    max-width: 141px;
+    padding:0px 38px;
+    border-radius: 4px;
+    border:none;
+    font-weight: bold;
+  
+   
+    &:focus{
+        outline:none;
+    }
+
+
+    &.light-theme-white{
+        @include themeColors($light-theme:true, $light-theme-white:true)
+    }
+    &.light-theme{
+        @include themeColors($light-theme:true, $light-theme-white:false)
+    }
+    &.dark-theme{
+        @include themeColors($light-theme:false)
+    }
+
+    
+}

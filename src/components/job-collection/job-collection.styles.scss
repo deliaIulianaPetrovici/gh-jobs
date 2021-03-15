@@ -1,0 +1,27 @@
+.jobCollection-container{
+    display:flex;
+    margin-top:80px;
+}
+
+.item-container{
+      display: grid;
+      -webkit-align-items: stretch; 
+      align-items: stretch; 
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 30px;
+
+      @media screen and (max-width: 991px){
+          grid-gap:10px;
+      }
+
+      .item{
+        align-self: stretch;
+      }
+      
+
+      & .jobBox-container{
+          margin-bottom: 10px;
+          
+         
+      }
+}

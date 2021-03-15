@@ -1,0 +1,12 @@
+.homepage-container{
+    width:76%;
+    margin:auto;
+
+    
+    @media screen and (max-width: 991px){
+        width:86%;
+    }
+    @media screen and (max-width: 767px){
+        width:90%;
+    }
+}

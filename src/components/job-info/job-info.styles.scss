@@ -1,0 +1,58 @@
+$violet:rgb(89,100,224);
+$lightViolet:#939BF4;
+$veryDarkBlue:#19202D;
+$midnight:#121721;
+$white:#FFFFFF;
+$lightGray:#f4f6f8;
+$gray:#9DAEC2;
+$darkGrey:#6E8098;
+
+.jobInfo-container{
+    height:250px;
+    width:100%;
+    background-color: #FFFFFF;
+    border-radius: 6px;
+    box-sizing: border-box;
+    padding:20px 32px;
+    text-align: left;
+   
+
+    h1{
+        text-align: left;
+    margin:-6px 0;
+    }
+    h2{
+        text-align: left;
+       margin:-6px 0;
+    }
+ 
+    .styled-link{
+     
+    text-decoration: none;
+    font-size: 20px;
+    color:$midnight;
+    font-weight: bold;
+    padding:0;
+  
+    &:hover{
+        color:$darkGrey;
+    }
+  }
+
+   p{
+    text-align: left;
+    color: $gray;
+    word-spacing: 2px;
+   
+
+    &.location{
+        font-size: 14px;
+        color: $violet;
+        font-weight: bold;
+        margin-top:40px;
+        
+
+    }
+}
+  
+}

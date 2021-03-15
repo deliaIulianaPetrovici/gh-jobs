@@ -1,0 +1,57 @@
+ // Variables
+ $checkbox-width:24px;
+ $lightGray:#f4f6f8;
+$violet:rgb(89,100,224);
+$lightViolet:#939BF4;
+
+
+.customCheckbox-container{
+    display: flex;  
+    align-items: center;
+   
+
+
+input[type="checkbox"] {
+    position: absolute;
+    left: -9999px;
+    opacity: 0;
+  
+    & + label {
+      display: flex;
+      cursor: pointer;
+      margin:0 25px;
+      
+      // Default State
+      &:before { 
+        content:"";
+        width: $checkbox-width;
+        height: $checkbox-width;
+        background-color: $lightGray;
+        border-radius: 4px;     
+      }
+      & + p:before {
+        content:"Full Time Only ";
+        font-size: 14px;
+        font-weight: bold;
+    }
+    }
+  
+    &:hover + label{
+      &:before{
+        background-color: $lightViolet;    
+    } }
+    // Checked State
+    &:checked + label {
+      &:before{
+          background-color: $violet;
+          background-image: url("../../assets/desktop/icon-check.svg");
+          background-repeat: no-repeat;
+          background-size: 16px 16px;
+          background-position: center;      
+      }
+    }
+   
+  }
+
+}
+   

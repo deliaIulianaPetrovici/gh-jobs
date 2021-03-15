@@ -1,0 +1,30 @@
+
+.customInput-container{
+    width:auto;
+    display:flex;
+    flex-direction: row;
+    padding:25px 15px;
+    border-right: 2px solid #f4f6f8;
+    
+
+    img{
+    
+        margin-right:10px;
+        height:24px;
+        width: auto;
+      } 
+
+      input{
+        flex:1;
+        font-size: 16px;
+        border: none;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        &:focus{
+            outline:none;
+        }
+       
+       
+    }
+ }

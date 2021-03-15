@@ -1,0 +1,31 @@
+.footer-container{
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin-top:80px;
+    align-items: center;
+
+}
+.footer-content{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width:50%;
+    padding:25px 5px;
+
+    .jobInfo-container{
+        padding:0;
+        margin:0;
+        height:auto;
+        h1{display:none;}
+        h2{display:none;}
+        .styled-link{display:none;}
+        .post-info{display:none;}
+        .location{display:none;}
+
+    } 
+
+    .custom-button{
+        flex:1;
+    }
+}

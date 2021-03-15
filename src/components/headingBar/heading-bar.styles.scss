@@ -1,0 +1,43 @@
+$lightGray:#f4f6f8;
+.headingBar-container{
+    width:auto;
+    max-height:140px;
+    display:flex;
+    flex-direction: row;
+    background-color: #FFFFFF;
+    border-radius: 0 4px 4px 4px;
+    align-items: center;
+    margin-top: -42px;
+    position: relative;
+    z-index:100;
+
+    .companyLogo-container{
+        flex:1;
+        background-repeat: no-repeat;
+        background-size: contain;
+        background-position: center;        
+        height: 120px;
+        width: auto;
+        border-radius: 0 0 0 4px;
+        margin:10px;
+        margin-right:0px;
+       
+
+        
+
+    }
+
+    .info-container{
+        flex:3;
+        padding: 0px 45px;
+        box-sizing: border-box;
+        h2{
+            text-align: left;
+        }
+    }
+    .button-container{
+        flex:1;
+        padding:5px 5px;
+    }
+}
+
