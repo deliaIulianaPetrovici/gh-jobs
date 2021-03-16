@@ -4,8 +4,8 @@ import './heading-bar.styles.scss';
 
 import CustomButton from '../custom-button/custom-button.component';
 
-const HeadingBar=({company, company_logo,company_url})=>{
-    
+const HeadingBar=(props)=>{
+    const {company, company_logo,company_url}=props.job;
     
 
     return(

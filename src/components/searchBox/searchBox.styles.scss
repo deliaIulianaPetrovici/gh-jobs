@@ -1,10 +1,11 @@
+@import '../styles-all/styles.scss';
 
 .customInput-container{
     width:auto;
     display:flex;
     flex-direction: row;
     padding:25px 15px;
-    border-right: 2px solid #f4f6f8;
+    border-right: 2px solid $lightGray;
     
 
     img{
@@ -20,6 +21,8 @@
         border: none;
         overflow: hidden;
         text-overflow: ellipsis;
+        background-color: var(--element-color);
+        color: var(--text-color);
         font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
         &:focus{
             outline:none;

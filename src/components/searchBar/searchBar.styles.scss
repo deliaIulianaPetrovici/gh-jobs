@@ -1,6 +1,4 @@
-$lightGray:#f4f6f8;
-$violet:rgb(89,100,224);
-$lightViolet:#939BF4;
+@import '../styles-all/styles.scss';
 
 .searchBar-container{
     
@@ -9,10 +7,13 @@ $lightViolet:#939BF4;
     z-index:100;
     margin-top:-40px;
     box-sizing: border-box;
-    background-color: white;
+    
     border-radius: 6px;
     display:flex;
     flex-wrap:wrap;
+    background-color: var(--element-color);
+
+   
 }
 
 .input-container{   

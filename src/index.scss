@@ -1,3 +1,4 @@
+@import './_mixins.scss';
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,7 +6,14 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f4f6f8;
+
+  @include lightmode;
+  &.is_inverted{
+    @include darkmode;
+  }
+  background-color: var(--background-color);
+  color:var(--text-color);
+  a{color:var(--link-color)};
 
 }
 

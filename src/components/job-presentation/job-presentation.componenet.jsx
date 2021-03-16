@@ -13,17 +13,13 @@ import { connect } from 'react-redux';
 
 const JobPresentation = ({ job }) => {
   console.log(job);
-  const { description, how_to_apply } = job;
+  const { description, how_to_apply, created_at} = job;
    
   let apply_link=how_to_apply.split('"');
-    
-
- 
-
   return (
     <div >
        <div className="jobDescription-content">
-      <HeadingBar {...job} className="heading-bar" />
+      <HeadingBar  job={job} className="heading-bar" />
       <div className="jobpresentation-container">
         <div className="jobpresentation-header">
           <JobInfo {...job} />

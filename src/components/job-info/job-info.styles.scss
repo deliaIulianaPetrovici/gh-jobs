@@ -1,16 +1,9 @@
-$violet:rgb(89,100,224);
-$lightViolet:#939BF4;
-$veryDarkBlue:#19202D;
-$midnight:#121721;
-$white:#FFFFFF;
-$lightGray:#f4f6f8;
-$gray:#9DAEC2;
-$darkGrey:#6E8098;
+@import '../styles-all/styles.scss';
 
 .jobInfo-container{
     height:250px;
     width:100%;
-    background-color: #FFFFFF;
+    background-color: var(--element-color);
     border-radius: 6px;
     box-sizing: border-box;
     padding:20px 32px;
@@ -30,7 +23,7 @@ $darkGrey:#6E8098;
      
     text-decoration: none;
     font-size: 20px;
-    color:$midnight;
+    color: var(--text-color);
     font-weight: bold;
     padding:0;
   

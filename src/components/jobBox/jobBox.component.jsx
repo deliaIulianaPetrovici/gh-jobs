@@ -5,8 +5,9 @@ import './jobBox.styles.scss';
 
 import JobInfo from '../job-info/job-info.component';
 
-const JobBox=({company_logo, ...otherProps})=>{
-   
+const JobBox=(props)=>{
+     
+    const {company_logo} =props;
     return(
    <div className="jobBox-container"
    >
@@ -17,8 +18,7 @@ const JobBox=({company_logo, ...otherProps})=>{
            
        </div>
        <JobInfo 
-         {...otherProps} />
-   </div>
+        {...props} />   </div>
 )};
 
 export default JobBox;

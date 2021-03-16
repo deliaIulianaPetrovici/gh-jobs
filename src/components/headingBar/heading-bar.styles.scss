@@ -4,7 +4,7 @@ $lightGray:#f4f6f8;
     max-height:140px;
     display:flex;
     flex-direction: row;
-    background-color: #FFFFFF;
+    background-color: var(--element-color);
     border-radius: 0 4px 4px 4px;
     align-items: center;
     margin-top: -42px;

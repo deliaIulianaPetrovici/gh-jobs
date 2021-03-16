@@ -1,18 +1,11 @@
-$violet:rgb(89,100,224);
-$lightViolet:#939BF4;
-$veryDarkBlue:#19202D;
-$midnight:#121721;
-$white:#FFFFFF;
-$lightGray:#f4f6f8;
-$gray:#9DAEC2;
-$darkGrey:#6E8098;
+@import '../styles-all//styles.scss';
 
 .jobpresentation-container{
     display:flex;
     flex-direction: column;
     margin-top:30px;
     border-radius: 4px;
-    background-color: $white;
+    background-color: var(--element-color);
     padding:20px 45px;
     box-sizing: border-box;
 }
@@ -61,12 +54,12 @@ $darkGrey:#6E8098;
 
     p{
         strong{
-            color:$midnight;
+            color:var(--text-color);
         }
     }
 
     h1, h2{
-        color:$midnight;
+        color:var(--text-color);
         font-size:large;
     }
     pre{

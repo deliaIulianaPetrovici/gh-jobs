@@ -12,13 +12,13 @@ import JobBox from '../jobBox/jobBox.component';
 
 
 
-const JobCollection=({  jobCollections})=>{
+const JobCollection=({jobCollections})=>{
     return(
     <div className="jobCollection-container">
         <div className="item-container">
         {
-            jobCollections.map(({ ...otherCollectionsProps})=>(
-                <JobBox  {...otherCollectionsProps}/>
+            jobCollections.map(({id, ...otherCollectionsProps})=>(
+                <JobBox key={id} id={id} {...otherCollectionsProps}/>
             ))
         }
         </div>

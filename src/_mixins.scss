@@ -1,0 +1,13 @@
+@mixin lightmode{
+    --text-color: #121721;
+    --link-color: rgb(89,100,224);
+    --background-color: #f4f6f8;
+    --element-color:#FFFFFF
+}
+
+@mixin darkmode{
+    --text-color: #FFFFFF;
+    --link-color: rgb(89,100,224);
+    --background-color: #121721;
+    --element-color:#19202D
+}
