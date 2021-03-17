@@ -1,9 +1,18 @@
+@import '../../mixins';
 .jobDescription-container{
     width:auto;
 }
 .jobDescription-content{
+    @include responsiveValues;
     width:50%;
     margin:auto;
+
+      
+    @include phonePortrait {width:var(--jobDescription-smallDisplay);}
+    @include phoneLandscape { width:var(--jobDescription-smallDisplay);  }
+    @include tabletPortrait {width:var(--jobDescription-smallDisplay);}
+    @include tabletLandscape { width:var(--jobDescription-mediumDisplay);  }
+    @include laptopDisplay { width:var( --jobDescription-bigDisplay); }
 }
 .heading-bar{
     margin-top: -22px;

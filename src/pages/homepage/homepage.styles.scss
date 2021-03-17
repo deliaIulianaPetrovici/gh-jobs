@@ -1,12 +1,15 @@
+@import '../../mixins';
+
 .homepage-container{
-    width:76%;
+    @include responsiveValues;
+    width:var(--container-desktopDisplays);
     margin:auto;
 
-    
-    @media screen and (max-width: 991px){
-        width:86%;
-    }
-    @media screen and (max-width: 767px){
-        width:90%;
-    }
+     
+    @include phonePortrait {width:var(--container-mobilePortrait);}
+    @include phoneLandscape { width:var(--container-mobileLandscape);  }
+    @include tabletPortrait {width:var(--container-tabletPortrait);}
+    @include tabletLandscape { width:var(--container-tabletLandscape);  }
+    @include laptopDisplay { width:var(--container-desktopDisplays); }
+   
 }

@@ -23,7 +23,9 @@ const JobPresentation = ({ job }) => {
       <div className="jobpresentation-container">
         <div className="jobpresentation-header">
           <JobInfo {...job} />
+          <div className="btn-container">
           <CustomButton onClick={()=> window.location.href =apply_link[1]}>Apply Now</CustomButton>
+          </div>
         </div>
         <div className="jobpresentation-body" dangerouslySetInnerHTML={{ __html: description }} >
         </div>

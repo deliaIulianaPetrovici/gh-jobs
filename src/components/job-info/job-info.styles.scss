@@ -1,14 +1,23 @@
 @import '../styles-all/styles.scss';
 
 .jobInfo-container{
-    height:250px;
+    height: 90%;
     width:100%;
     background-color: var(--element-color);
     border-radius: 6px;
     box-sizing: border-box;
     padding:20px 32px;
     text-align: left;
+    display:flex;
+    flex-direction:column;
+    
+    .job-info{
+        flex-grow:2;
+        height:100%;
+    }
    
+
+
 
     h1{
         text-align: left;
@@ -36,15 +45,11 @@
     text-align: left;
     color: $gray;
     word-spacing: 2px;
-   
 
-    &.location{
+    &.location{  
         font-size: 14px;
         color: $violet;
         font-weight: bold;
-        margin-top:40px;
-        
-
     }
 }
   

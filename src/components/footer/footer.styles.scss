@@ -1,17 +1,33 @@
+@import '../../mixins';
 .footer-container{
     display: flex;
     flex-direction: column;
     background-color: var(--element-color);
     margin-top:80px;
     align-items: center;
-
 }
 .footer-content{
+    @include responsiveValues;
     display: flex;
     flex-direction: row;
     align-items: center;
     width:50%;
     padding:25px 5px;
+
+    @include phonePortrait {
+        width:var(--jobDescription-smallDisplay);
+        flex-direction: column;
+        align-items: stretch;
+    }
+    @include phoneLandscape {
+        width:var(--jobDescription-smallDisplay);
+        flex-direction: column;
+        align-items: stretch;
+     }
+  
+    @include tabletPortrait {width:var(--jobDescription-smallDisplay);}
+    @include tabletLandscape { width:var(--jobDescription-mediumDisplay);  }
+    @include laptopDisplay { width:var( --jobDescription-bigDisplay); }
 
     .jobInfo-container{
         padding:0;
@@ -23,9 +39,27 @@
         .post-info{display:none;}
         .location{display:none;}
 
+        @include phonePortrait {
+           display:none;
+        }
+        @include phoneLandscape {
+            display:none;
+         }
+
     } 
 
-    .custom-button{
+    .btn-container{
         flex:1;
-    }
+        display:flex;
+        flex-direction: row;
+        .custom-button{
+         @include phonePortrait {  
+            flex:1; 
+         }
+         @include phoneLandscape {
+            flex:1; 
+         }
+           
+       }
+   }
 }

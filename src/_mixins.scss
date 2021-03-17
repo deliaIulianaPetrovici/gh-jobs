@@ -11,3 +11,55 @@
     --background-color: #121721;
     --element-color:#19202D
 }
+
+@mixin responsiveValues{
+   --container-mobilePortrait:88%;
+   --container-mobileLandscape:88%;
+   --container-tabletPortrait:88%;
+   --container-tabletLandscape:88%;
+   --container-laptopDisplay:80%;
+   --container-desktopDisplays:76%;
+
+   --jobDescription-smallDisplay:88%;
+   --jobDescription-mediumDisplay:76%;
+   --jobDescription-bigDisplay:60%;
+
+}
+
+$mobile-portrait:320px;
+$mobile-landscape:710px;
+$tablet-portrait:768px;
+$tablet-landscape:1024px;
+$laptop-display:1366px;
+$desktop-displays:1680px;
+
+
+
+@mixin phonePortrait {
+    @media  screen and (max-width: #{$mobile-landscape - 1px}) {
+      @content;
+    }
+  }
+  @mixin phoneLandscape {
+    @media (min-width: #{$mobile-landscape}) and (max-width: #{$tablet-portrait - 1px}) {
+      @content;
+    }
+  }
+
+  
+@mixin tabletPortrait {
+    @media (min-width: #{$tablet-portrait}) and (max-width: #{$tablet-landscape - 1px}) {
+      @content;
+    }
+  }
+  @mixin tabletLandscape {
+    @media (min-width: #{$tablet-landscape}) and (max-width: #{$laptop-display - 1px}) {
+      @content;
+    }
+  }
+
+  @mixin laptopDisplay {
+    @media (min-width: #{$laptop-display}) and (max-width: #{$desktop-displays - 1px}) {
+      @content;
+    }
+  }

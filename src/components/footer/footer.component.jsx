@@ -19,7 +19,9 @@ const Footer=(job)=>{
     <div className="footer-container">
         <div className="footer-content">
             <JobInfo {...job}/>
+            <div className="btn-container">
             <CustomButton onClick={()=> window.location.href =apply_link[1]}>Apply Now</CustomButton>
+            </div>
         </div>
     </div>
 )};

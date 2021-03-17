@@ -1,8 +1,9 @@
+@import '../../mixins';
+@import '../styles-all/styles.scss';
+ 
  // Variables
  $checkbox-width:24px;
- $lightGray:#f4f6f8;
-$violet:rgb(89,100,224);
-$lightViolet:#939BF4;
+
 
 
 .customCheckbox-container{
@@ -33,6 +34,16 @@ input[type="checkbox"] {
         content:"Full Time Only ";
         font-size: 14px;
         font-weight: bold;
+        margin-right:20px;
+        padding:0  15px 0 10px;
+        white-space: nowrap;
+        @include tabletPortrait {
+          content:"Full Time  ";
+          padding:0 10px 0 5px;
+      }
+      @include tabletLandscape {  content:"Full Time  ";
+        padding:0 10px 0 5px;
+       }
     }
     }
   

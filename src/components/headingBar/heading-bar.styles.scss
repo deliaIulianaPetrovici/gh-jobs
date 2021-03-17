@@ -1,7 +1,9 @@
+@import '../../mixins';
 $lightGray:#f4f6f8;
+
 .headingBar-container{
     width:auto;
-    max-height:140px;
+    
     display:flex;
     flex-direction: row;
     background-color: var(--element-color);
@@ -10,30 +12,53 @@ $lightGray:#f4f6f8;
     margin-top: -42px;
     position: relative;
     z-index:100;
+    
+    @include phonePortrait {
+        flex-direction: column;
+        border-radius: 4px 4px 4px 4px;
+       
+    }
+
 
     .companyLogo-container{
-        flex:1;
+        @include phonePortrait {
+            height: 60px;
+            width:100px; 
+            margin:0;
+            margin-top: -25px;   
+        }
+      
+        
         background-repeat: no-repeat;
         background-size: contain;
         background-position: center;        
         height: 120px;
-        width: auto;
-        border-radius: 0 0 0 4px;
+        width: 120px;
         margin:10px;
         margin-right:0px;
-       
 
-        
+  
 
     }
 
     .info-container{
-        flex:3;
+      
+        flex:2;
         padding: 0px 45px;
         box-sizing: border-box;
         h2{
             text-align: left;
         }
+
+        @include phonePortrait {
+            flex:1;
+            h2{
+                font-size: 20px;
+            }
+        }
+     
+
+     
     }
     .button-container{
         flex:1;

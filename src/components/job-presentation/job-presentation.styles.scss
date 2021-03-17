@@ -1,4 +1,5 @@
 @import '../styles-all//styles.scss';
+@import '../../mixins';
 
 .jobpresentation-container{
     display:flex;
@@ -8,13 +9,21 @@
     background-color: var(--element-color);
     padding:20px 45px;
     box-sizing: border-box;
+    @include phonePortrait {
+        padding:20px 25px;
+    }
 }
 .jobpresentation-header{
     display:flex;
     flex-direction: row;
     align-items: center;
+    @include phonePortrait {
+        flex-direction: column;
+        align-items: stretch;
+    }
     
     .jobInfo-container{
+        flex-grow:3;
         padding:0;
         margin:0;
         height: auto;
@@ -24,10 +33,24 @@
         .company-name{ display:none;}
         .location{margin-top: 16px;}
 
+        @include phonePortrait {
+            flex:1;
+            h1{ font-size: 20px;}
+        }
+
     } 
 
-    .custom-button{
-        flex:1;
+    .btn-container{
+       flex:1;
+       display:flex;
+       flex-direction: row;
+       .custom-button{
+        @include phonePortrait {  
+           flex:1; 
+        }
+          
+      }
+    
     }
 }
 
@@ -79,12 +102,18 @@
 }
 .apply-container{
     margin-top:30px;
-    background-color: $violet;
+    
     padding:20px 45px;
     border-radius: 4px;
     box-sizing: border-box;
     color: $white;
     text-align: left;
+
+    @include phonePortrait {background-image: url('../../assets/mobile/bg-pattern-detail-footer.svg');}
+    @include phoneLandscape {background-image: url('../../assets/mobile/bg-pattern-detail-footer.svg'); }
+    background-image: url('../../assets/desktop/bg-pattern-detail-footer.svg');
+    background-repeat: no-repeat;
+    background-size:cover;
   
     p{
         margin-bottom: 40px;

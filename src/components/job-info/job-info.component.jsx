@@ -64,12 +64,9 @@ const JobInfo = ({id, company,  created_at, location, title, type}) => {
 
  }
 
- 
-    
-
     return(
-    <div className="jobInfo-container" 
-    >
+    <div className="jobInfo-container"  >
+      <div className="job-info">
         <p className="post-info">{handleDate()} ago<strong > . </strong> {type}</p>
         <h1 >{title}</h1>
         <h2 >{title}</h2>
@@ -77,6 +74,7 @@ const JobInfo = ({id, company,  created_at, location, title, type}) => {
         <Link className="styled-link" to={`position/${id}`}>{title}</Link>
         
         <p className="company-name">{company}</p>
+        </div>
         <p className="location">{location}</p>
     </div>
 )};

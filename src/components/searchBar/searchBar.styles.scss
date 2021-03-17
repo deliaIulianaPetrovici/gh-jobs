@@ -1,47 +1,52 @@
 @import '../styles-all/styles.scss';
-
+@import '../../mixins';
 .searchBar-container{
     
     margin:auto;
     position:relative;
     z-index:100;
     margin-top:-40px;
-    box-sizing: border-box;
-    
+    box-sizing: border-box; 
     border-radius: 6px;
     display:flex;
-    flex-wrap:wrap;
     background-color: var(--element-color);
-
-   
 }
 
 .input-container{   
-    width:70%;
+   flex-grow:3;
     height:auto;
     display:flex;
     flex-direction: row;
     box-sizing: border-box;
+    @include tabletPortrait {flex-grow:2;}
+    @include tabletLandscape { flex-grow:2;  }
 }
 
-.searchInput-container{  width:60%;  }
-.locationInput-container{  width: 40%;  }
+.searchInput-container{   flex-grow:2;}
+.locationInput-container{  flex-grow:1;}
 
  .search-container{
-  width:29.99%;
+    flex-grow:0.5;
   display: flex;
   align-items: center;
   
  
- 
   .checkBox-container{
-    width:50%; 
-    
+    flex-grow:1;
 }
 
 .button-container{
- width:25%;
- margin:0 5px 0 0 ;
+    padding:0 10px;
+    .custom-button{
+        @include tabletPortrait {
+            padding:0 15px;
+            margin-right:5px;
+        }
+        @include tabletLandscape {
+            padding:0 15px;
+            margin-right:5px;
+        }
+    }
 }
  }
 

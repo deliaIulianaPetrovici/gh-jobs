@@ -1,6 +1,15 @@
+@import '../../mixins';
+
 .header-background{
     width: 100%;
     height: 162px;
+   
+
+    @include phonePortrait {background-image: url('../../assets/mobile/bg-pattern-header.svg');}
+    @include phoneLandscape {background-image: url('../../assets/mobile/bg-pattern-header.svg'); }
+    @include tabletPortrait {background-image: url('../../assets/tablet/bg-pattern-header.svg');}
+    @include tabletLandscape {background-image: url('../../assets/tablet/bg-pattern-header.svg');  }
+
     background-image: url('../../assets/desktop/bg-pattern-header.svg');
     background-repeat: no-repeat;
     background-size:cover;
@@ -10,7 +19,8 @@
    
 }
 .container{
-    width:76%;
+    @include responsiveValues;
+    width:var(--container-desktopDisplays);
     display:flex;
     padding-top: 44px;
     margin:auto;
@@ -18,7 +28,11 @@
     flex-direction: row;
     align-items: center;
     
-   
+    @include phonePortrait {width:var(--container-mobilePortrait);}
+    @include phoneLandscape { width:var(--container-mobileLandscape);  }
+    @include tabletPortrait {width:var(--container-tabletPortrait);}
+    @include tabletLandscape { width:var(--container-tabletLandscape);  }
+    @include laptopDisplay { width:var(--container-desktopDisplays); }
 }
 
 .logo-container{
