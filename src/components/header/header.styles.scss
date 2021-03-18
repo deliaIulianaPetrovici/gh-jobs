@@ -5,10 +5,7 @@
     height: 162px;
    
 
-    @include phonePortrait {background-image: url('../../assets/mobile/bg-pattern-header.svg');}
-    @include phoneLandscape {background-image: url('../../assets/mobile/bg-pattern-header.svg'); }
-    @include tabletPortrait {background-image: url('../../assets/tablet/bg-pattern-header.svg');}
-    @include tabletLandscape {background-image: url('../../assets/tablet/bg-pattern-header.svg');  }
+   
 
     background-image: url('../../assets/desktop/bg-pattern-header.svg');
     background-repeat: no-repeat;
@@ -16,6 +13,15 @@
     border-bottom-left-radius: 100px;
     position:relative;
     z-index:1;
+
+    @include phonePortrait {
+        border-bottom-left-radius: 0;
+        background-image: url('../../assets/mobile/bg-pattern-header.svg');}
+    @include phoneLandscape {
+        border-bottom-left-radius: 0;
+        background-image: url('../../assets/mobile/bg-pattern-header.svg'); }
+    @include tabletPortrait {background-image: url('../../assets/tablet/bg-pattern-header.svg');}
+    @include tabletLandscape {background-image: url('../../assets/tablet/bg-pattern-header.svg');  }
    
 }
 .container{
@@ -35,14 +41,27 @@
     @include laptopDisplay { width:var(--container-desktopDisplays); }
 }
 
+
+ 
+.logo-link{
+    flex:1;
+    text-decoration: none;
+    
+    &:hover{
+        cursor:pointer;
+    }
+}
+
 .logo-container{
     width:115px;
     height:32px;
     background-image: url(../../assets/desktop/logo.svg);
     background-repeat: no-repeat;
-    flex:1;
+   
+   
     
 }
+
 
 .theme-container{
     position:relative;

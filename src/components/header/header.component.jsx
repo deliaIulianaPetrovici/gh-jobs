@@ -1,6 +1,10 @@
 import React from 'react';
 import './header.styles.scss';
+
+import {Link} from 'react-router-dom';
+
 import { withStyles } from '@material-ui/core/styles';
+
 import Switch from '@material-ui/core/Switch';
 
 
@@ -109,8 +113,10 @@ class Header extends React.Component {
 
     return (<div className="header-background">
       <div className="container" >
-        <div className="logo-container">
-        </div>
+       
+          <Link class="logo-link" to="/"> 
+          <div className="logo-container"></div></Link>
+        
         <div className="theme-container">
           <div className="theme-icon-light"></div>
           <CustomSwitch checked={this.checked} onChange={this.toogleChecked} ></CustomSwitch>

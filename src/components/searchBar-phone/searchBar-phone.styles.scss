@@ -1,0 +1,49 @@
+
+.searchBar-phone-container{
+    display:flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: var(--element-color);
+    color:var(--text-color);
+    margin-top:-25px;
+    position:relative;
+    z-index: 120;
+    border-radius: 4px;
+    padding: 5px 15px;
+}
+
+
+.phone-descrInput-container{
+    flex:1;
+    
+   
+    .customInput-container{
+        border:none;
+        img{   
+           order:2;
+          } 
+    
+          input{ 
+           order:1;
+           border:none;
+          }
+           
+    }
+
+    
+   
+}
+.filterBtn-container{
+    padding: 0 25px;
+}
+
+.searchBtn-container{
+   
+    margin:0;
+    padding:0;
+    .custom-button{
+        margin:0;
+        padding:3px 15px;
+    }
+}
+

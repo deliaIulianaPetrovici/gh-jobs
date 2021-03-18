@@ -4,9 +4,11 @@ import './searchBar.styles.scss';
 import CustomButtom from '../custom-button/custom-button.component';
 import SearchBox from '../searchBox/searchBox.component';
 import CustomCheckbox from '../custom-checkBox/custom-checkBox.component';
+import SearchBarPhone from '../searchBar-phone/searchBar-phone.component';
 
 import iconSearch from '../../assets/desktop/icon-search.svg';
 import iconLocation from '../../assets/desktop/icon-location.svg';
+
 
 
 import { connect } from 'react-redux';
@@ -21,8 +23,23 @@ class SearchBar extends React.Component
             this.state = {
                 location:'',
                 description:'',
-                full_time:false
+                full_time:false,
+                width:window.innerWidth
             }
+        }
+
+        componentDidMount(){
+            window.addEventListener("resize", ()=>{
+                if(window.innerWidth!=this.state.width) 
+                this.setState({width:window.innerWidth});
+            })  
+        }
+
+        componentWillUnmount(){
+            window.removeEventListener("resize", ()=>{
+                if(window.innerWidth!=this.state.width) 
+                this.setState({width:window.innerWidth});
+            })  
         }
 
         handleSubmit=async event=>{
@@ -55,7 +72,20 @@ class SearchBar extends React.Component
           };
 
     render() {
-            return (
+           const breakpoint =767;
+          
+            return this.state.width<breakpoint ?
+            ( <SearchBarPhone location={this.state.location}
+                description={this.state.description}
+                full_time={this.state.full_time}
+                handleChange={this.handleChange}
+                handleSubmit={this.handleSubmit}
+                handleChecked={this.handleChecked}
+            >
+
+            </SearchBarPhone>)
+            :
+            (
                 <div className="searchBar-container">
                     <div className="input-container">
                         <div className="searchInput-container">
@@ -90,7 +120,7 @@ class SearchBar extends React.Component
 
 
                 </div>
-            )
+            );
         }
     };
 

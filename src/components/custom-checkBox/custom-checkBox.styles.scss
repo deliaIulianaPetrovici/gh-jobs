@@ -37,6 +37,7 @@ input[type="checkbox"] {
         margin-right:20px;
         padding:0  15px 0 10px;
         white-space: nowrap;
+        
         @include tabletPortrait {
           content:"Full Time  ";
           padding:0 10px 0 5px;

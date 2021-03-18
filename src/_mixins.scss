@@ -63,3 +63,12 @@ $desktop-displays:1680px;
       @content;
     }
   }
+
+
+  @mixin displayFlex{
+    display: -webkit-box;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: -moz-flex;
+    display: -webkit-flex;
+  }
