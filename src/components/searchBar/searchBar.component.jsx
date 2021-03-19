@@ -12,14 +12,16 @@ import iconLocation from '../../assets/desktop/icon-location.svg';
 
 
 import { connect } from 'react-redux';
-import {updateJobCollections} from '../../redux/jobs/jobs.actions';
+
+import { updatePageNumber,
+    updateSearchOptions} from '../../redux/searchOptions/searchOptions.actions';
 
 
 class SearchBar extends React.Component  
     {
         constructor(props) {
             super(props);
-
+            
             this.state = {
                 location:'',
                 description:'',
@@ -34,6 +36,7 @@ class SearchBar extends React.Component
                 this.setState({width:window.innerWidth});
             })  
         }
+        
 
         componentWillUnmount(){
             window.removeEventListener("resize", ()=>{
@@ -42,27 +45,18 @@ class SearchBar extends React.Component
             })  
         }
 
-        handleSubmit=async event=>{
+        handleSubmit= event=>{
             const {location,description,full_time}=this.state;
-
-            const { updateJobCollections } = this.props;
-            fetch(`https://cors.bridged.cc/https://jobs.github.com/positions.json?description=${description}&location=${location}&full_time=${full_time}`)
-                 .then(res => res.json())
-                 .then(
-                      (jobCollections) => {
-                           
-                           updateJobCollections(jobCollections);
-                      }
-                 )
-
-
-
+            const {updatePageNumber, updateSearchOptions, page_number}=this.props;
+            
+            if(page_number!=1) updatePageNumber(1);
+            updateSearchOptions(`description=${description}&location=${location}&full_time=${full_time}`);
+    
         }
 
 
         handleChange = event => {
-            const { value, name } = event.target;
-        
+            const { value, name } = event.target; 
             this.setState({ [name]: value });
           };
 
@@ -74,7 +68,7 @@ class SearchBar extends React.Component
     render() {
            const breakpoint =767;
           
-            return this.state.width<breakpoint ?
+            return this.state.width<=breakpoint ?
             ( <SearchBarPhone location={this.state.location}
                 description={this.state.description}
                 full_time={this.state.full_time}
@@ -108,7 +102,7 @@ class SearchBar extends React.Component
                     <div className="search-container">
                         <div className="checkBox-container">
                             <CustomCheckbox 
-                            name="description"
+                            name="full_time"
                             defaultChecked={this.state.full_time}
                             onChange={this.handleChecked}
                             />
@@ -123,12 +117,16 @@ class SearchBar extends React.Component
             );
         }
     };
-
+    const mapStateToProps=(state)=>({ 
+        page_number:state.searchOptions.pageNumber,
+       
+   })
     
     const mapDispatchToProps=(dispatch)=>({
-        updateJobCollections: (jobCollections)=>
-        dispatch(updateJobCollections(jobCollections))
+        updateSearchOptions:(searchOptions)=>dispatch(updateSearchOptions(searchOptions)),
+        updatePageNumber:(page_number)=>dispatch(updatePageNumber(page_number))
+        
    });
 
 
-export default connect(null,mapDispatchToProps)(SearchBar);
+export default connect(mapStateToProps,mapDispatchToProps)(SearchBar);

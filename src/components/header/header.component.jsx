@@ -114,7 +114,7 @@ class Header extends React.Component {
     return (<div className="header-background">
       <div className="container" >
        
-          <Link class="logo-link" to="/"> 
+          <Link className="logo-link" to="/"> 
           <div className="logo-container"></div></Link>
         
         <div className="theme-container">

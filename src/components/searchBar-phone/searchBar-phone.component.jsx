@@ -21,8 +21,6 @@ class SearchBarPhone extends React.Component{
   
 
     handleFilter=()=>{
-         
-         console.log("HEllo");
         this.setState({open:true})
     }
     handleClose=()=>{

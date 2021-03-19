@@ -12,4 +12,8 @@
     @include tabletLandscape { width:var(--container-tabletLandscape);  }
     @include laptopDisplay { width:var(--container-desktopDisplays); }
    
+
+    .loadMore-btn-container{
+        margin:65px auto 50px auto ;
+    }
 }
