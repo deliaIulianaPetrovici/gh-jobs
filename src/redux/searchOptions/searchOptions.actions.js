@@ -5,8 +5,8 @@ export const updatePageNumber=(page_number)=>({
     payload:page_number,
 });
 
-export const updateSearchOptions=(searchOptions)=>({
+export const updateSearchOptions=(searchOptionsUrl)=>({
     type: SearchOptionsTypes.UPDATE_SEARCH_OPTIONS,
-    payload:searchOptions,
+    payload:searchOptionsUrl,
 });
 

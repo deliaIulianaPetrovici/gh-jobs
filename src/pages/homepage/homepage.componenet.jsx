@@ -31,7 +31,9 @@ class Homepage extends React.Component {
 
      componentDidMount() {
        const {page_number} = this.props;
-        this.fetchData(page_number);
+       if(page_number===1)this.fetchData(page_number);
+    
+       
      }
 
      componentDidUpdate(prevProps){
@@ -50,23 +52,20 @@ class Homepage extends React.Component {
      handleLoadMoreItems=()=>{
           const {updatePageNumber}= this.props;
           const {page_number}=this.props;
-          updatePageNumber((page_number+1));
-          
-          
-         
+          updatePageNumber((page_number+1));   
      }
 
 
      render() {
           const {match,page_number,jobs} =this.props;
-          let button;
+          let button=100/50 <page_number;
          
           return (
           <div className="homepage-container">
                <SearchBar/>
                <JobCollection />
                <div className="loadMore-btn-container">
-               {  jobs.length/50 <page_number ? (<div></div>):
+               {  button ? (<div></div>):
                <CustomButtom onClick={this.handleLoadMoreItems} >Load More</CustomButtom> 
           }
                </div>

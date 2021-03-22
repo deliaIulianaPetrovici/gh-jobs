@@ -15,6 +15,7 @@ class Header extends React.Component {
 
     this.state = {
       lightMode: 'default',
+      switchDark:false
      
     };
   }
@@ -22,14 +23,10 @@ class Header extends React.Component {
     const localTheme = window.localStorage.getItem('lightMode');
     if (localTheme === 'default') {
       window.localStorage.setItem('lightMode', 'inverted')
-      this.setState({ lightMode: 'inverted', })
-   //   this.checked=true ;
-     
+      this.setState({ lightMode: 'inverted'});
     } else {
       window.localStorage.setItem('lightMode', 'default');
-      this.setState({ lightMode: 'default' });
-   //   this.checked=false;
-      
+      this.setState({ lightMode: 'default' });   
     }
   }
    
@@ -41,13 +38,12 @@ class Header extends React.Component {
     
     if (localTheme === 'inverted') {
       document.body.classList.add('is_inverted');
-      this.checked=false;
       if(btn) btn.classList.add('dark-theme');
+      if(this.state.switchDark!=true) this.setState({ switchDark:true});
     }
     else {
       document.body.classList.remove('is_inverted');
-     
-      this.checked=true;
+      if(this.state.switchDark!=false) this.setState({ switchDark:false});
       if(btn) btn.classList.remove('dark-theme');
     }
   }
@@ -59,6 +55,7 @@ class Header extends React.Component {
   componentDidUpdate(){
     this.changeTheme();
   }
+
 
 
   render() {
@@ -119,7 +116,9 @@ class Header extends React.Component {
         
         <div className="theme-container">
           <div className="theme-icon-light"></div>
-          <CustomSwitch checked={this.checked} onChange={this.toogleChecked} ></CustomSwitch>
+          <CustomSwitch 
+          checked={this.state.switchDark} 
+          onChange={this.toogleChecked} ></CustomSwitch>
           <div className="theme-icon-dark"></div>
 
         </div>
