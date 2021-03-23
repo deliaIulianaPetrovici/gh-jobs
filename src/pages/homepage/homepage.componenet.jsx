@@ -12,6 +12,7 @@ import { updateJobCollections,loadMoreJobs } from '../../redux/jobs/jobs.actions
 import { updatePageNumber } from '../../redux/searchOptions/searchOptions.actions';
 import CustomButtom from '../../components/custom-button/custom-button.component';
 
+
 class Homepage extends React.Component {
   
 
@@ -21,11 +22,16 @@ class Homepage extends React.Component {
                .then(res => res.json())
                .then(
                     (jobCollections) => {
+                         this.setState({loading:false});
                          if(page_number===1)
                          updateJobCollections(jobCollections);
                          else loadMoreJobs(jobCollections)
+
+                         
+
                     }
                )
+              
      }
   
 
@@ -58,12 +64,14 @@ class Homepage extends React.Component {
 
      render() {
           const {match,page_number,jobs} =this.props;
-          let button=100/50 <page_number;
+          let button=jobs.length/50 <page_number;
          
           return (
           <div className="homepage-container">
                <SearchBar/>
-               <JobCollection />
+            <JobCollection/>
+            
+                  
                <div className="loadMore-btn-container">
                {  button ? (<div></div>):
                <CustomButtom onClick={this.handleLoadMoreItems} >Load More</CustomButtom> 
