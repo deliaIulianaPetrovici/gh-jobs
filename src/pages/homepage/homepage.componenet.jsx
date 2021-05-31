@@ -1,4 +1,4 @@
-import React, { useEffect} from 'react';
+import React, { useState, useEffect} from 'react';
 import { connect } from 'react-redux';
 
 
@@ -14,7 +14,7 @@ import CustomButtom from '../../components/custom-button/custom-button.component
 
 
 const  Homepage =({updatePageNumber,page_number, searchOptionsUrl, jobs, loadMoreJobs, updateJobCollections})=> {
-
+     const [btnRender, setBtnRender]=useState(true);
 
      useEffect(()=>{
            const fetchData=async()=>{
@@ -41,13 +41,18 @@ const  Homepage =({updatePageNumber,page_number, searchOptionsUrl, jobs, loadMor
           fetchData();
      },[searchOptionsUrl,page_number, updateJobCollections,loadMoreJobs]);
 
+     useEffect(()=>{
+          const button=!(jobs.length/50 <page_number);
+       
+          setBtnRender(button);
+         
+     },[jobs,page_number]);
+
 
      const handleLoadMoreItems=()=>{
           updatePageNumber((page_number+1));  
      }
 
-        //  let button=jobs.length/50 <page_number;
-        let button =true;
          
          
           return (
@@ -57,8 +62,9 @@ const  Homepage =({updatePageNumber,page_number, searchOptionsUrl, jobs, loadMor
             
                   
                <div className="loadMore-btn-container">
-               {  button ? (<div></div>):
-               <CustomButtom onClick={handleLoadMoreItems} >Load More</CustomButtom> 
+               {  btnRender ? <CustomButtom onClick={handleLoadMoreItems} >Load More</CustomButtom>  :
+                (<div></div>)
+              
           }
                </div>
               
