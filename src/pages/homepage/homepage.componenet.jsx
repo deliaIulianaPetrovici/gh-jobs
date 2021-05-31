@@ -17,22 +17,26 @@ const  Homepage =({updatePageNumber,page_number, searchOptionsUrl, jobs, loadMor
 
 
      useEffect(()=>{
-          const fetchData=()=>{
-        
-               fetch(`https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${page_number}&${searchOptionsUrl}`)
-                    .then(res => res.json())
-                    .then(
-                         (jobCollections) => {
-                             
-                              if(page_number===1)
-                              updateJobCollections(jobCollections);
-                              else loadMoreJobs(jobCollections)
-     
-                              
-     
-                         }
-                    )
+           const fetchData=async()=>{
+         try{
+          await fetch(`https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${page_number}&${searchOptionsUrl}`)
+          .then(res => res.json())
+          .then(
+               (jobCollections) => {
                    
+                    if(page_number===1)
+                    updateJobCollections(jobCollections);
+                    else loadMoreJobs(jobCollections)
+
+                    
+
+               }
+          )
+         
+         }catch(e){
+              console.log(e);
+         }
+             
           };
           fetchData();
      },[searchOptionsUrl,page_number, updateJobCollections,loadMoreJobs]);
