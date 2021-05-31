@@ -6,7 +6,7 @@ import SearchBox from '../searchBox/searchBox.component';
 import CustomButtom from '../custom-button/custom-button.component';
 import DialogBox from '../dialog-box/dialogBox.component';
 
-import iconFilter from '../../assets/mobile/icon-filter.svg';
+
 import iconSearch from '../../assets/mobile/icon-search.svg';
 import {ReactComponent as IconFilter} from '../../assets/mobile/icon-filter.svg';
 
@@ -58,7 +58,7 @@ const  SearchBarPhone=({location, description,
 
         <div className="searchBtn-container">
             <CustomButtom onClick={handleSubmit} type="submit">
-                <img src={iconSearch} ></img>
+                <img src={iconSearch} alt="search"></img>
             </CustomButtom>
         </div>
        </div>

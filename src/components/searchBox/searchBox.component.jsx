@@ -3,7 +3,7 @@ import './searchBox.styles.scss';
 
 const SearchBox = ({icon, ...otherProps}) => (
         <div className="customInput-container">
-        <img src={icon} />
+        <img src={icon} alt="icon" />
         <input type="text" {...otherProps}></input>
     </div>
 );

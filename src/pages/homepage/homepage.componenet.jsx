@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from 'react';
+import React, { useEffect} from 'react';
 import { connect } from 'react-redux';
 
 
@@ -14,55 +14,40 @@ import CustomButtom from '../../components/custom-button/custom-button.component
 
 
 const  Homepage =({updatePageNumber,page_number, searchOptionsUrl, jobs, loadMoreJobs, updateJobCollections})=> {
-     const [pageNo, setPageNo]=useState(page_number);
-     const [loading,setLoading]=useState(true);
-  
 
-     const  fetchData=()=>{
+
+     useEffect(()=>{
+          const fetchData=()=>{
         
-          fetch(`https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${pageNo}&${searchOptionsUrl}`)
-               .then(res => res.json())
-               .then(
-                    (jobCollections) => {
-                         setLoading(false);
-                         if(pageNo===1)
-                         updateJobCollections(jobCollections);
-                         else loadMoreJobs(jobCollections)
-
-                         
-
-                    }
-               )
-              
-     }
-  
-
-     useEffect(()=>{
+               fetch(`https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${page_number}&${searchOptionsUrl}`)
+                    .then(res => res.json())
+                    .then(
+                         (jobCollections) => {
+                             
+                              if(page_number===1)
+                              updateJobCollections(jobCollections);
+                              else loadMoreJobs(jobCollections)
+     
+                              
+     
+                         }
+                    )
+                   
+          };
           fetchData();
-     },[pageNo]);
+     },[searchOptionsUrl,page_number, updateJobCollections,loadMoreJobs]);
 
-     useEffect(()=>{
-          if(pageNo===1)   fetchData();
-          setPageNo(1);
-     },[searchOptionsUrl]);
-  
 
      const handleLoadMoreItems=()=>{
-          let no=pageNo;
-          setPageNo(no+1) ;
-          updatePageNumber((pageNo+1));  
-        
+          updatePageNumber((page_number+1));  
      }
 
-
-   
-         
-          let button=jobs.length/50 <pageNo;
+          let button=jobs.length/50 <page_number;
          
          
           return (
           <div className="homepage-container">
-               <SearchBar/>
+          <SearchBar/>
             <JobCollection/>
             
                   

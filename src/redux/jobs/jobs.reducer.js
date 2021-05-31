@@ -4,13 +4,13 @@ const INITIAL_STATE={
     jobCollections:null,
 };
 
-const loadJobs=(initialCollection, newCollecction)=>{
-    console.log(initialCollection);
-    console.log(newCollecction);
-    let x= initialCollection.concat(newCollecction);
-    console.log('x: '+ x);
-   return x;
-}
+// const loadJobs=(initialCollection, newCollecction)=>{
+//     console.log(initialCollection);
+//     console.log(newCollecction);
+//     let x= initialCollection.concat(newCollecction);
+//     console.log('x: '+ x);
+//    return x;
+// }
 
 const jobsReducer =(state=INITIAL_STATE,action)=>{
     switch(action.type){

@@ -13,7 +13,7 @@ import { connect } from 'react-redux';
 
 const JobPresentation = ({ job }) => {
   
-  const { description, how_to_apply} = job;
+  const { description, how_to_apply, } = job;
    
   let apply_link=how_to_apply.split('"');
   return (

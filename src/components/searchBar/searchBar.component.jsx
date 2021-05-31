@@ -28,12 +28,12 @@ const SearchBar=({updatePageNumber, updateSearchOptions, page_number})=>
 
        useEffect(()=>{
         window.addEventListener("resize", ()=>{
-            if(window.innerWidth!=width) 
+            if(window.innerWidth!==width) 
             setWidth(window.innerWidth);
         })  
         return function cleanup() {
             window.removeEventListener("resize", ()=>{
-                if(window.innerWidth!=width) 
+                if(window.innerWidth!==width) 
                 setWidth(window.innerWidth);
             })  
           };
@@ -42,14 +42,14 @@ const SearchBar=({updatePageNumber, updateSearchOptions, page_number})=>
        
 
         const handleSubmit= event=>{
-            if(page_number!=1) updatePageNumber(1);
+            if(page_number!==1) updatePageNumber(1);
             updateSearchOptions(`description=${description}&location=${location}&full_time=${fullTime}`);
     
         }
 
 
         const handleChange = event => {
-            console.log(event);
+            
             const { value, name } = event.target; 
             if(name==='description')  setDescription( value);
             if(name==='location')  setLocation( value);
