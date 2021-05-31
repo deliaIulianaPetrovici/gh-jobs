@@ -2,7 +2,7 @@ import React from 'react';
 
 import './job-presentation.styles.scss';
 
-import { createStructuredSelector } from 'reselect';
+
 import { selectCollection } from '../../redux/jobs/jobs.selector';
 
 import JobInfo from '../job-info/job-info.component';
@@ -12,8 +12,8 @@ import Footer from '../footer/footer.component';
 import { connect } from 'react-redux';
 
 const JobPresentation = ({ job }) => {
-  console.log(job);
-  const { description, how_to_apply, created_at} = job;
+  
+  const { description, how_to_apply} = job;
    
   let apply_link=how_to_apply.split('"');
   return (
@@ -41,10 +41,7 @@ const JobPresentation = ({ job }) => {
 };
 
 
-/*const mapStateToProps = (state, ownProps) => ({
-    id:ownProps.match.params.positionId,
-    jobCollections:state.jobs.jobCollections
-  }); */
+
 
 const mapStateToProps = (state, ownProps) => ({
   job: selectCollection(ownProps.match.params.positionId)(state)

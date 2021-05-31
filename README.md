@@ -24,10 +24,9 @@ The project is a solution to Frontend Mentor coding challanges.
 
 
 ## Status
-Project is: _in progress.
+Project is: _finished
 
-## To do 
-*  Switch from lifecycle methods to React Hooks.
+
 
 ## Inspiration
 [Frontend Mentor](https://www.frontendmentor.io) challenges.

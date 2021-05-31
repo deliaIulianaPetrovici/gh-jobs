@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import './header.styles.scss';
 
 import {Link} from 'react-router-dom';
@@ -8,29 +8,23 @@ import { withStyles } from '@material-ui/core/styles';
 import Switch from '@material-ui/core/Switch';
 
 
-class Header extends React.Component {
+const Header =()=> {
+  const [lightMode, setLightMode]=useState('default');
+  const [switchDark, setSwitchDark]=useState(false);
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      lightMode: 'default',
-      switchDark:false
-     
-    };
-  }
-  toogleChecked = () => {
+ 
+  const toogleChecked = () => {
     const localTheme = window.localStorage.getItem('lightMode');
     if (localTheme === 'default') {
       window.localStorage.setItem('lightMode', 'inverted')
-      this.setState({ lightMode: 'inverted'});
+      setLightMode('inverted');
     } else {
       window.localStorage.setItem('lightMode', 'default');
-      this.setState({ lightMode: 'default' });   
+      setLightMode('default' );   
     }
   }
    
-  changeTheme=()=>{
+  const changeTheme=()=>{
     
     const localTheme = window.localStorage.getItem('lightMode');
     const btn=document.querySelector(".light-theme-white");
@@ -39,29 +33,23 @@ class Header extends React.Component {
     if (localTheme === 'inverted') {
       document.body.classList.add('is_inverted');
       if(btn) btn.classList.add('dark-theme');
-      if(this.state.switchDark!=true) this.setState({ switchDark:true});
+      if(switchDark!=true) setSwitchDark(true);
     }
     else {
       document.body.classList.remove('is_inverted');
-      if(this.state.switchDark!=false) this.setState({ switchDark:false});
+      if(switchDark!=false) setSwitchDark(false);
       if(btn) btn.classList.remove('dark-theme');
     }
   }
 
-  componentDidMount(){
-    this.changeTheme();
-  }
+  useEffect(()=>{
+    changeTheme();
+  });
 
-  componentDidUpdate(){
-    this.changeTheme();
-  }
+ 
 
-
-
-  render() {
 
     const pxToRem = (px, oneRemPx = 17) => `${px / oneRemPx}rem`;
-    const borderWidth = 2;
     const width = pxToRem(48);
     const height = pxToRem(24);
     const size = pxToRem(15);
@@ -117,8 +105,8 @@ class Header extends React.Component {
         <div className="theme-container">
           <div className="theme-icon-light"></div>
           <CustomSwitch 
-          checked={this.state.switchDark} 
-          onChange={this.toogleChecked} ></CustomSwitch>
+          checked={switchDark} 
+          onChange={toogleChecked} ></CustomSwitch>
           <div className="theme-icon-dark"></div>
 
         </div>
@@ -126,7 +114,6 @@ class Header extends React.Component {
 
     </div>
     )
-  }
-};
+  };
 
 export default Header;

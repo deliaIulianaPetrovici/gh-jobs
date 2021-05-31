@@ -5,11 +5,11 @@ import './footer.styles.scss';
 import JobInfo from '../job-info/job-info.component';
 import CustomButton from '../custom-button/custom-button.component';
 
-import { useHistory  } from 'react-router-dom';
+
 
 const Footer=(job)=>{
-    let history = useHistory();
-    const {company_url, how_to_apply}=job;
+   
+    const { how_to_apply}=job;
  
 
     let apply_link=how_to_apply.split('"');

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, } from 'react';
 
 import './searchBar-phone.styles.scss';
 
@@ -10,35 +10,26 @@ import iconFilter from '../../assets/mobile/icon-filter.svg';
 import iconSearch from '../../assets/mobile/icon-search.svg';
 import {ReactComponent as IconFilter} from '../../assets/mobile/icon-filter.svg';
 
-class SearchBarPhone extends React.Component{
-    constructor(props) {
-        super(props);
+const  SearchBarPhone=({location, description,
+    fullTime,
+      handleChange,
+       handleSubmit,
+       handleChecked})=>{
+    const [open,setOpen]=useState(false);
+   
 
-        this.state = {
-           open:false,
-        }
+    const handleFilter=()=>{
+        setOpen(true)
     }
-  
-
-    handleFilter=()=>{
-        this.setState({open:true})
-    }
-    handleClose=()=>{
-        const {handleSubmit}=this.props;
+    const handleClose=()=>{
         handleSubmit();
-        this.setState({open:false})
+        setOpen(false)
     }
-    handleDialogClose=()=>{
-        this.setState({open:false})
+    const handleDialogClose=()=>{
+        setOpen(false)
     }
 
 
-    render() {
-        const {location, description,
-             full_time,
-              handleChange,
-               handleSubmit,
-               handleChecked} = this.props;
         return (
         <div className="searchBar-phone-container">
 
@@ -52,17 +43,17 @@ class SearchBarPhone extends React.Component{
          
        </div>
        <div className="filterBtn-container" >
-               <IconFilter onClick={this.handleFilter}/>
+               <IconFilter onClick={handleFilter}/>
            </div>
 
          <DialogBox 
-         open={this.state.open}
-         onClose={this.handleDialogClose}
+         open={open}
+         onClose={handleDialogClose}
          location={location}
          handleChange={handleChange}
-         full_time={full_time}
+         fullTime={fullTime}
          handleChecked={handleChecked}
-         handleClose={this.handleClose}
+         handleClose={handleClose}
          ></DialogBox>
 
         <div className="searchBtn-container">
@@ -72,7 +63,6 @@ class SearchBarPhone extends React.Component{
         </div>
        </div>
     )
-}
-}
+};
 
 export default SearchBarPhone;

@@ -1,4 +1,4 @@
-import React, { Children } from 'react';
+import React from 'react';
 
 import './dialog-box.styles.scss';
 
@@ -13,7 +13,7 @@ import iconLocation from '../../assets/desktop/icon-location.svg';
 
 
 const DialogBox =(props)=>{
-    const {onClose,selectedValue, open,
+    const {onClose, open,
        location,
        handleChange,
        handleClose,

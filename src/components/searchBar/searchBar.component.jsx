@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState, useEffect}  from 'react';
 import './searchBar.styles.scss';
 
 import CustomButtom from '../custom-button/custom-button.component';
@@ -17,64 +17,61 @@ import { updatePageNumber,
     updateSearchOptions} from '../../redux/searchOptions/searchOptions.actions';
 
 
-class SearchBar extends React.Component  
+const SearchBar=({updatePageNumber, updateSearchOptions, page_number})=>
     {
-        constructor(props) {
-            super(props);
-            
-            this.state = {
-                location:'',
-                description:'',
-                full_time:false,
-                width:window.innerWidth
-            }
-        }
+        const [location, setLocation]=useState('');
+       const [description, setDescription]=useState('');
+       const [fullTime, setFullTime]=useState(false);
+       const [width, setWidth]=useState(window.innerWidth);
+     
+    
 
-        componentDidMount(){
-            window.addEventListener("resize", ()=>{
-                if(window.innerWidth!=this.state.width) 
-                this.setState({width:window.innerWidth});
-            })  
-        }
-        
-
-        componentWillUnmount(){
+       useEffect(()=>{
+        window.addEventListener("resize", ()=>{
+            if(window.innerWidth!=width) 
+            setWidth(window.innerWidth);
+        })  
+        return function cleanup() {
             window.removeEventListener("resize", ()=>{
-                if(window.innerWidth!=this.state.width) 
-                this.setState({width:window.innerWidth});
+                if(window.innerWidth!=width) 
+                setWidth(window.innerWidth);
             })  
-        }
+          };
+       })
 
-        handleSubmit= event=>{
-            const {location,description,full_time}=this.state;
-            const {updatePageNumber, updateSearchOptions, page_number}=this.props;
-            
+       
+
+        const handleSubmit= event=>{
             if(page_number!=1) updatePageNumber(1);
-            updateSearchOptions(`description=${description}&location=${location}&full_time=${full_time}`);
+            updateSearchOptions(`description=${description}&location=${location}&full_time=${fullTime}`);
     
         }
 
 
-        handleChange = event => {
+        const handleChange = event => {
+            console.log(event);
             const { value, name } = event.target; 
-            this.setState({ [name]: value });
+            if(name==='description')  setDescription( value);
+            if(name==='location')  setLocation( value);
+            if(name==='fullTime')  setFullTime( value);
+           
           };
 
           
-          handleChecked = event => {
-             this.setState({full_time:!this.full_time});
+         const handleChecked = event => {
+            setFullTime(!fullTime);
           };
 
-    render() {
+    
            const breakpoint =767;
           
-            return this.state.width<=breakpoint ?
-            ( <SearchBarPhone location={this.state.location}
-                description={this.state.description}
-                full_time={this.state.full_time}
-                handleChange={this.handleChange}
-                handleSubmit={this.handleSubmit}
-                handleChecked={this.handleChecked}
+            return width<=breakpoint ?
+            ( <SearchBarPhone location={location}
+                description={description}
+                fullTime={fullTime}
+                handleChange={handleChange}
+                handleSubmit={handleSubmit}
+                handleChecked={handleChecked}
             >
 
             </SearchBarPhone>)
@@ -86,16 +83,16 @@ class SearchBar extends React.Component
                             <SearchBox icon={iconSearch}
                                 placeholder="Filter by title, companies, expertise.."
                                 name="description"
-                                value={this.state.description}
-                                onChange={this.handleChange}
+                                value={description}
+                                onChange={handleChange}
                             />
                         </div>
                         <div className="locationInput-container">
                             <SearchBox icon={iconLocation}
                                 placeholder="Filter by location.."
                                 name="location"
-                                value={this.state.location}
-                                onChange={this.handleChange}
+                                value={location}
+                                onChange={handleChange}
                                 />
                         </div>
                     </div>
@@ -103,20 +100,19 @@ class SearchBar extends React.Component
                         <div className="checkBox-container">
                             <CustomCheckbox 
                             name="full_time"
-                            defaultChecked={this.state.full_time}
-                            onChange={this.handleChecked}
+                            defaultChecked={fullTime}
+                            onChange={handleChecked}
                             />
                         </div>
                         <div className="button-container">
-                            <CustomButtom onClick={this.handleSubmit} type="submit"  >Search</CustomButtom>
+                            <CustomButtom onClick={handleSubmit} type="submit"  >Search</CustomButtom>
                         </div>
                     </div>
 
 
                 </div>
             );
-        }
-    };
+        };
     const mapStateToProps=(state)=>({ 
         page_number:state.searchOptions.pageNumber,
        

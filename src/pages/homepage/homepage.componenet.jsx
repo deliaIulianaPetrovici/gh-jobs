@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { connect } from 'react-redux';
-import { Route } from 'react-router-dom';
+
 
 import './homepage.styles.scss';
 
@@ -13,17 +13,19 @@ import { updatePageNumber } from '../../redux/searchOptions/searchOptions.action
 import CustomButtom from '../../components/custom-button/custom-button.component';
 
 
-class Homepage extends React.Component {
+const  Homepage =({updatePageNumber,page_number, searchOptionsUrl, jobs, loadMoreJobs, updateJobCollections})=> {
+     const [pageNo, setPageNo]=useState(page_number);
+     const [loading,setLoading]=useState(true);
   
 
-     fetchData(page_number,url){
-          const { updateJobCollections,loadMoreJobs } = this.props;
-          fetch(`https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${page_number}&${url}`)
+     const  fetchData=()=>{
+        
+          fetch(`https://cors.bridged.cc/https://jobs.github.com/positions.json?page=${pageNo}&${searchOptionsUrl}`)
                .then(res => res.json())
                .then(
                     (jobCollections) => {
-                         this.setState({loading:false});
-                         if(page_number===1)
+                         setLoading(false);
+                         if(pageNo===1)
                          updateJobCollections(jobCollections);
                          else loadMoreJobs(jobCollections)
 
@@ -35,36 +37,28 @@ class Homepage extends React.Component {
      }
   
 
-     componentDidMount() {
-       const {page_number} = this.props;
-       if(page_number===1)this.fetchData(page_number);
-    
-       
+     useEffect(()=>{
+          fetchData();
+     },[pageNo]);
+
+     useEffect(()=>{
+          if(pageNo===1)   fetchData();
+          setPageNo(1);
+     },[searchOptionsUrl]);
+  
+
+     const handleLoadMoreItems=()=>{
+          let no=pageNo;
+          setPageNo(no+1) ;
+          updatePageNumber((pageNo+1));  
+        
      }
 
-     componentDidUpdate(prevProps){
-          const {page_number,searchOptionsUrl}=this.props;
+
+   
          
-          if(prevProps.page_number!=page_number)  {
-               this.fetchData(page_number,searchOptionsUrl);
-          }else
-          if(prevProps.searchOptionsUrl!=searchOptionsUrl){
-               this.fetchData(page_number,searchOptionsUrl)
-          }
-     }
-    
-    
-
-     handleLoadMoreItems=()=>{
-          const {updatePageNumber}= this.props;
-          const {page_number}=this.props;
-          updatePageNumber((page_number+1));   
-     }
-
-
-     render() {
-          const {match,page_number,jobs} =this.props;
-          let button=jobs.length/50 <page_number;
+          let button=jobs.length/50 <pageNo;
+         
          
           return (
           <div className="homepage-container">
@@ -74,13 +68,12 @@ class Homepage extends React.Component {
                   
                <div className="loadMore-btn-container">
                {  button ? (<div></div>):
-               <CustomButtom onClick={this.handleLoadMoreItems} >Load More</CustomButtom> 
+               <CustomButtom onClick={handleLoadMoreItems} >Load More</CustomButtom> 
           }
                </div>
               
           </div>);
-     }
-};
+     };
 
     const mapStateToProps=(state)=>({ 
          page_number:state.searchOptions.pageNumber,
@@ -91,7 +84,7 @@ class Homepage extends React.Component {
      const mapDispatchToProps=(dispatch)=>({
           updateJobCollections: (jobCollections)=>
           dispatch(updateJobCollections(jobCollections)),
-          updatePageNumber:(page_number)=>dispatch(updatePageNumber(page_number)),
+          updatePageNumber:(pageNo)=>dispatch(updatePageNumber(pageNo)),
           loadMoreJobs:(jobCollections)=>dispatch(loadMoreJobs(jobCollections))
      });
 

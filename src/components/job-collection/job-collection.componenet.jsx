@@ -13,7 +13,7 @@ import JobBox from '../jobBox/jobBox.component';
 
 
 const JobCollection=({jobCollections})=>{
-    console.log(jobCollections);
+    
     return(
     <div className="jobCollection-container">
         <div className="item-container">
