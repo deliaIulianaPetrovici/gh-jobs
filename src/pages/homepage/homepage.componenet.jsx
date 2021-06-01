@@ -42,9 +42,15 @@ const  Homepage =({updatePageNumber,page_number, searchOptionsUrl, jobs, loadMor
      },[searchOptionsUrl,page_number, updateJobCollections,loadMoreJobs]);
 
      useEffect(()=>{
-          const button=!(jobs.length/50 <page_number);
+          if(jobs.length){
+               const button=!(jobs.length/50 <page_number);
+               setBtnRender(button);
+          }else{
+               setBtnRender(false);
+          }
+        
        
-          setBtnRender(button);
+        
          
      },[jobs,page_number]);
 
