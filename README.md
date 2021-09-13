@@ -2,6 +2,11 @@
 
 Build a fully-functional jobs board using the GitHub Jobs API
 
+## Links:
+!! The page its not currenlty working due to the API. !!
+
+Live URL: https://gh-jobs-omega.vercel.app/
+
 ## Screenshots
 ![Design preview for the GitHub Jobs API coding challenge](./preview.jpg)
 
@@ -24,8 +29,10 @@ The project is a solution to Frontend Mentor coding challanges.
 
 
 ## Status
-Project is: _finished
+Project is: _not-finished.
 
+## To do
+Change the current API which is not working anymore with a new one.
 
 
 ## Inspiration
